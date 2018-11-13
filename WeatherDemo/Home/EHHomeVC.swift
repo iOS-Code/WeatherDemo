@@ -14,11 +14,16 @@ class EHHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.testCode()
     }
     
-    
-    // MARK: - Navigation
-    
+    func testCode() {
+        let handyJSONObj = TestHandyJSON.init()
+        handyJSONObj.testCode()
+        
+//        let alamofireObj = TestAlamofire.init()
+//        alamofireObj.testRequest()
+    }
     
     // MARK: - Navigation
     
@@ -28,4 +33,5 @@ class EHHomeVC: UIViewController {
 //        // Get the new view controller using segue.destination.
 //        // Pass the selected object to the new view controller.
 //    }
+    
 }

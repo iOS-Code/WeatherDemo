@@ -7,6 +7,7 @@ target 'WeatherDemo' do
 
     pod 'Alamofire'
     pod 'AlamofireObjectMapper'
+    pod 'HandyJSON', '~> 4.2.0'
     
 #    pod 'Alamofire'                                 #网络库
 #    pod 'AlamofireObjectMapper'                     #模型库
