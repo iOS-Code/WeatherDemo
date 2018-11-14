@@ -40,8 +40,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db7-k6-kQL">
-                                <rect key="frame" x="120" y="80" width="5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db7-k6-kQL">
+                                <rect key="frame" x="120" y="80" width="23.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="fmu-SV-RyQ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EHWeatherListCell" id="fmu-SV-RyQ" customClass="EHWeatherListCell" customModule="WeatherDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -122,6 +122,11 @@
                                             <constraint firstItem="T1j-Q5-vyI" firstAttribute="top" secondItem="PSv-YW-cw6" secondAttribute="bottom" constant="6" id="pew-sR-ox2"/>
                                             <constraint firstAttribute="trailing" secondItem="PSv-YW-cw6" secondAttribute="trailing" id="rO5-eG-5t4"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="contentLbl" destination="H06-qP-BPd" id="i51-Az-uYH"/>
+                                            <outlet property="imgView" destination="T1j-Q5-vyI" id="1dh-0z-Q11"/>
+                                            <outlet property="titleLbl" destination="PSv-YW-cw6" id="hXV-JQ-gY4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -181,6 +186,11 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="TPc-KG-83j"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="cityLbl" destination="3P9-HQ-AZO" id="T0d-An-JDH"/>
+                        <outlet property="temperatureLbl" destination="Db7-k6-kQL" id="jQH-2X-yzb"/>
+                        <outlet property="weatherLbl" destination="jju-Vj-0ab" id="614-s0-i6n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7j-HB-8PV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

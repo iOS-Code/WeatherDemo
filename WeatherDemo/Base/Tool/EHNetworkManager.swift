@@ -12,7 +12,29 @@ import AlamofireObjectMapper
 
 class EHNetworkManager {
     
-    // MARK: - Network
+    class func requestWeatherData() {
+        
+        let url = "http://weatherapi.market.alicloudapi.com/weather/TodayTemperatureByCity"
+        let params = ["cityName":"北京"]
+        let headers = ["Authorization":"APPCODE 691a8c4d415449ffb69b1a7ac2a4000d"];
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (responseObject) in
+            
+            if responseObject.response?.statusCode == 200 {
+                // Success
+//                print("Request: \(String(describing: responseObject.request))")
+//                print("Header: \(String(describing: responseObject.request?.allHTTPHeaderFields))")
+//                print("Response: \(String(describing: responseObject.response))")
+                
+//                let defaultData = UserDefaults.standard
+//                defaultData.setValue(responseObject.result, forKeyPath: "WeatherData");
+                
+            } else {
+                // Error
+                
+            }
+        }
+    }
     
     func testRequest() {
         let url = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/d8bb95982be8a11a2308e779bb9a9707ebe42ede/sample_json"
@@ -31,6 +53,5 @@ class EHNetworkManager {
             }
         }
     }
-    
     
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2018 KMF-Engineering. All rights reserved.
 //
 
-import UIKit
 import HandyJSON
 
 class TestHandyJSON {
@@ -95,6 +94,7 @@ class TestHandyJSON {
         
         required init() {}
     }
+    
     func testRequest4() {
         let jsonString = "{\"code\":200,\"msg\":\"success\",\"data\":{\"cat\":{\"id\":12345,\"name\":\"Kitty\"}}}"
         
