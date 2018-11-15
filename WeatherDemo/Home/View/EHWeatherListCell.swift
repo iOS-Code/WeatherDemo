@@ -17,5 +17,41 @@ class EHWeatherListCell: UICollectionViewCell {
     func loadModel(model:WeatherWeekModel) {
         self.titleLbl.text = model.week ?? ""
         self.contentLbl.text = model.temperature ?? ""
+//        self.imgView.image = UIImage.init(named: self.checkWeatherImage(name: ""))
     }
+    
+    func checkWeatherImage(name: String) -> String {
+        switch name {
+        case "云":
+            <#code#>
+        case "晴":
+            <#code#>
+        case "阴":
+            <#code#>
+        case "雪":
+            <#code#>
+        case "雾":
+            <#code#>
+        case "阵雨":
+            <#code#>
+        case "雷阵雨":
+            <#code#>
+        case "cloudy":
+            <#code#>
+        case "cloudy":
+            <#code#>
+        case "cloudy":
+            <#code#>
+        case "cloudy":
+            <#code#>
+        case "cloudy":
+            <#code#>
+
+        case "cloudy":
+            <#code#>
+        default:
+            <#code#>
+        }
+    }
+    
 }

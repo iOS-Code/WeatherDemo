@@ -25,6 +25,8 @@ class EHHomeVC: UIViewController {
     @IBOutlet weak var middleBtn: UIButton!
     @IBOutlet weak var rightBtn: UIButton!
     
+    var array:[WeatherWeekModel] = []
+    
     // MARK: - Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +90,8 @@ class EHHomeVC: UIViewController {
             })
             
             // 更新本周数据
-            print(weekModelArrray)
+            array = weekModelArrray as! [WeatherWeekModel];
+            print(array as Any)
         }
     }
     
@@ -105,6 +108,8 @@ class EHHomeVC: UIViewController {
         }
     }
     
+    
+    
     // MARK: - TestCode
     func testCode() {
         let handyJSONObj = TestHandyJSON.init()
@@ -114,4 +119,29 @@ class EHHomeVC: UIViewController {
         alamofireObj.testRequest()
     }
 
+}
+
+
+// MARK: - Extension UICollectionView Delegate
+extension EHHomeVC:UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.array.count;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: EHWeatherListCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EHWeatherListCell", for: indexPath) as! EHWeatherListCell
+        cell.loadModel(model: self.array[indexPath.row])
+        return cell;
+    }
+    
+    
 }
