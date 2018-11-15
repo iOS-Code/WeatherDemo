@@ -16,6 +16,15 @@ class EHHomeVC: UIViewController {
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var weatherLbl: UILabel!
     
+    @IBOutlet weak var listView: UICollectionView!
+    
+    @IBOutlet weak var nowTempLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    
+    @IBOutlet weak var leftBtn: UIButton!
+    @IBOutlet weak var middleBtn: UIButton!
+    @IBOutlet weak var rightBtn: UIButton!
+    
     // MARK: - Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
