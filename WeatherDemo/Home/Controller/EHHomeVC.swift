@@ -15,6 +15,7 @@ class EHHomeVC: UIViewController {
     @IBOutlet weak var temperatureLbl: UILabel!
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var weatherLbl: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
     
     @IBOutlet weak var listView: UICollectionView!
     
@@ -68,17 +69,18 @@ class EHHomeVC: UIViewController {
     func parseWeatherData(responseDic:[String:Any]){
         let todayDic: Dictionary = (responseDic["result"] as! [String : Any])["today"] as! [String : Any]
         let futureDic: Dictionary = (responseDic["result"] as! [String : Any])["future"] as! [String : Any]
-        print(responseDic)
+//        print(responseDic)
         
         // 更新本地缓存
         UserDefaults.standard.set(todayDic["date_y"], forKey: "today")
         UserDefaults.standard.set(responseDic, forKey: "weatherData")
         
         // 解析当日
-        if let todayModel = WeatherTodayModel.deserialize(from:responseDic , designatedPath: "result.today") {
-            // 更新当日数据
-            print(todayModel)
-        }
+        self.updateHomeVC(responseDic)
+//        if let todayModel = WeatherTodayModel.deserialize(from:responseDic , designatedPath: "result.today") {
+//            // 更新当日数据
+//            print(todayModel)
+//        }
         
         // 解析本周
         let futureValueArray = Array(futureDic.values)
@@ -91,7 +93,8 @@ class EHHomeVC: UIViewController {
             
             // 更新本周数据
             array = weekModelArrray as! [WeatherWeekModel];
-            print(array as Any)
+//            print(array as Any)
+            self.listView.reloadData()
         }
     }
     
@@ -108,7 +111,53 @@ class EHHomeVC: UIViewController {
         }
     }
     
+    func updateHomeVC(_ response: [String : Any]) {
+        
+        let data: Dictionary = (response["result"] as! [String : Any])["today"] as! [String : Any]
+        let sdData: Dictionary = (response["result"] as! [String : Any])["sk"] as! [String : Any]
+        print(data)
+        print(sdData)
+        
+        self.cityLbl.text = data["city"] as? String
+        self.weatherLbl.text = data["weather"] as? String
+        self.nowTempLbl.text = sdData["temp"] as? String
+        
+        var timeString: String = data["date_y"] as! String
+        timeString.append(" ")
+        timeString.append(sdData["time"] as! String)
+        timeString.append(" 发布")
+        self.timeLbl.text = timeString
+        
+        self.leftBtn.setTitle(sdData["wind_strength"] as? String, for: UIControl.State.normal)
+        self.middleBtn.setTitle(sdData["uv_index"] as? String, for: UIControl.State.normal)
+        self.rightBtn.setTitle(sdData["humidity"] as? String, for: UIControl.State.normal)
+        
+        self.imgView.image = UIImage.init(named: self.checkWeatherImage(name: data["weather"] as! String))
+    }
     
+    
+    func checkWeatherImage(name: String) -> String {
+        switch name {
+        case "晴转多云":
+            return "cloudy"
+        case "多云转晴":
+            return "sun"
+        case "晴":
+            return "sun"
+        case "阴":
+            return "yin"
+        case "雪":
+            return "snow_s"
+        case "雾":
+            return "fog"
+        case "阵雨":
+            return "zhenyu"
+        case "雷阵雨":
+            return "leizhenyu"
+        default:
+            return "sun"
+        }
+    }
     
     // MARK: - TestCode
     func testCode() {
